@@ -8,6 +8,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 public class Main {
+
     public static void main(String[] args) throws FileNotFoundException {
 
 //        // FUNCION REVERSE
@@ -129,6 +130,7 @@ public class Main {
 
     }
 
+
     public static String reverse(String texto) {
 
         String textoInvertido = "";
@@ -138,10 +140,12 @@ public class Main {
         return textoInvertido;
     }
 
+
     public static int dividir(int a, int b) throws ArithmeticException {
 
         return a / b;
     }
+
 
     public static void copiarFichero(String fileIn, String fileOut) throws FileNotFoundException {
 
@@ -158,3 +162,5 @@ public class Main {
         }
     }
 }
+
+
