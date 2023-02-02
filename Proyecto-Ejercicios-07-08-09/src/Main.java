@@ -1,11 +1,9 @@
+import javax.print.attribute.standard.Finishings;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Scanner;
-import java.util.Vector;
+import java.util.*;
 
 public class Main {
 
@@ -128,39 +126,76 @@ public class Main {
 //        String fileOut = escanear.nextLine();
 //        copiarFichero(fileIn, fileOut);
 
+
+        // N°9 ----------------------------------------
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese los datos");
+        System.out.print("Ingrese el fichero de origen: ");
+        String fileIn = scanner.nextLine();
+        System.out.print("Ingrese el fichero de destino: ");
+        String fileOut = scanner.nextLine();
+        archivar(fileIn, fileOut);
+
+        HashMap<String, String> coleccion = new HashMap<>();
+        coleccion.put(fileIn, fileOut);
+
+        Object[] objArray = coleccion.entrySet().toArray();
+
+        System.out.println(Arrays.toString(objArray));
+
     }
 
 
-    public static String reverse(String texto) {
-
-        String textoInvertido = "";
-        for (int i = 0; i < texto.length(); i++) {
-            textoInvertido = texto.charAt(i) + textoInvertido;
-        }
-        return textoInvertido;
-    }
-
-
-    public static int dividir(int a, int b) throws ArithmeticException {
-
-        return a / b;
-    }
-
-
-    public static void copiarFichero(String fileIn, String fileOut) throws FileNotFoundException {
+    // N°9 ----------------------------------------
+    public static void archivar(String archivo, String duplicado) {
 
         try {
-            InputStream ingresaFichero = new FileInputStream(fileIn);
-            byte[] datos = ingresaFichero.readAllBytes();
-            ingresaFichero.close();
+            InputStream file = new FileInputStream(archivo);
+            byte[] datos = file.readAllBytes();
+            file.close();
 
-            PrintStream sacarFichero = new PrintStream(fileOut);
-            sacarFichero.write(datos);
-            sacarFichero.close();
+            PrintStream copy = new PrintStream(duplicado);
+            copy.write(datos);
+            copy.close();
+            System.out.println("El fichero se copio correctamente");
+
+
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("Excepción: " + e.getMessage());
         }
     }
+
+
+//    public static void copiarFichero(String fileIn, String fileOut) throws FileNotFoundException {
+//
+//        try {
+//            InputStream ingresaFichero = new FileInputStream(fileIn);
+//            byte[] datos = ingresaFichero.readAllBytes();
+//            ingresaFichero.close();
+//
+//            PrintStream sacarFichero = new PrintStream(fileOut);
+//            sacarFichero.write(datos);
+//            sacarFichero.close();
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
+
+
+//    public static int dividir(int x, int y) throws ArithmeticException {
+//
+//        return x / y;
+//    }
+
+
+//    public static String reverse(String texto) {
+//
+//        String textoInvertido = "";
+//        for (int i = 0; i < texto.length(); i++) {
+//            textoInvertido = texto.charAt(i) + textoInvertido;
+//        }
+//        return textoInvertido;
+//    }
 }
 
 
